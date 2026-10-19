@@ -1,18 +1,30 @@
-# React Publishing Guidelines (Backend Integration Pending)
+# React 퍼블리싱 가이드 (백엔드 연동 전)
 
-## 1. Component Architecture (컴포넌트 구조 원칙)
+## 1. 컴포넌트 구조 원칙
 
-- **Modularization**: 하나의 파일에 모든 코드를 넣지 말고, 컴포넌트는 작게 쪼개서 `src/components/` 하위에 목적별로 배치할 것.
-- **TypeScript First**: 모든 컴포넌트는 반드시 TypeScript를 사용하며, 파일 상단에 명시적인 `Props` 인터페이스를 선언할 것.
-- **Naming Convention**: 컴포넌트 파일명과 함수명은 PascalCase를 사용할 것 (예: `UserCard.tsx`).
+- **모듈화**: 하나의 파일에 모든 코드를 넣지 말고, 컴포넌트는 작게 나눠 `src/components/` 아래 목적별로 배치합니다.
+- **TypeScript 우선**: 모든 컴포넌트는 TypeScript로 작성하고, 파일 상단에 명시적인 `Props` 인터페이스를 선언합니다.
+- **명명 규칙**: 컴포넌트 파일명과 함수명은 PascalCase를 사용합니다. (예: `UserCard.tsx`)
 
-## 2. Styling Rules (스타일링 원칙 - 디자인 변동성 대응)
+## 2. 스타일링 원칙
 
-- **Flexibility**: 디자인이 계속 변경될 수 있으므로, 하드코딩된 값보다는 Tailwind CSS의 유연한 유틸리티 클래스를 적극 활용할 것.
-- **Layout Standards**: 화면 배치는 Flexbox와 Grid를 우선적으로 사용하여 반응형 대응이 쉽도록 구조화할 것.
-- **Placeholder Style**: 아직 디자인이 나오지 않은 영역이나 미완성 컴포넌트는 임시로 시각적 영역을 잡아주는 `Placeholder` 형태로 처리하고 주석으로 남겨둘 것.
+- 디자인이 변경될 수 있으므로 하드코딩된 값보다 Tailwind CSS의 유연한 유틸리티 클래스를 우선 활용합니다.
+- 화면 배치는 Flexbox와 Grid를 우선 사용해 반응형으로 구성합니다.
+- 디자인이 정해지지 않았거나 미완성인 영역은 `Placeholder` 형태로 시각적 공간을 잡고, 코드에 설명 주석을 남깁니다.
 
-## 3. Data & State Management (데이터 규칙)
+## 3. 데이터와 상태 관리
 
-- **Mock Data Isolation**: 백엔드 API 연동 전이므로, 컴포넌트 내부에서 임의로 데이터를 만들지 말고 반드시 `src/data/mockData.ts`를 참조해서 렌더링할 것.
-- **Props Driven**: UI 컴포넌트는 최대한 '더미 데이터나 상태를 외부에서 주입받는(Props-driven)' 순수 컴포넌트 형태로 짤 것 (나중에 API가 붙을 때 교체하기 쉽도록).
+- 백엔드 API 연동 전의 목 데이터는 컴포넌트 안에서 임의로 만들지 말고 `src/data/mockData.ts`에서 관리합니다.
+- UI 컴포넌트는 데이터와 상태를 props로 전달받는 형태로 작성해 API 연동 시 교체하기 쉽게 합니다.
+
+## 4. 작업 영역 구분
+
+- 현재 저장소 루트는 퍼블리싱 UI 작업 영역입니다. 공통 컴포넌트는 `src/components/`, 화면 미리보기는 `src/pages/`에 둡니다.
+- 퍼블리싱 미리보기는 실제 거래를 수행하지 않으며, 가공된 가상 데이터만 사용합니다.
+- 세부 규칙은 `docs/rules/`에서 작업에 맞게 확인합니다.
+
+## 5. 세부 규칙 문서
+
+- 공통 컴포넌트: `docs/rules/components.md`
+- 퍼블리싱 화면: `docs/rules/design.md`
+- 바이브코딩 작업 절차: `docs/rules/vibe-coding.md`
